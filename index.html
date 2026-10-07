@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Clever — маркетинг для роста в Турции</title>
+    <meta name="description" content="Digital Clever — стратегический маркетинг для брендов, которые растут в Турции." />
+    <link rel="icon" href="https://static.tildacdn.net/tild6639-6237-4137-b263-333634663136/DIGITAL_CLEVER.svg" type="image/svg+xml" />
+    <style>
+      :root {
+        --ink: #121212;
+        --paper: #f3f0e9;
+        --paper-2: #e8e4db;
+        --orange: #ff5a36;
+        --blue: #5a5cff;
+        --line: rgba(18, 18, 18, .18);
+        --muted: #69655e;
+        --radius: 22px;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; overflow-y: scroll; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--paper);
+        font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.45;
+        min-height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+      a { color: inherit; text-decoration: none; }
+      button { font: inherit; }
+      .shell { width: min(1320px, calc(100% - 48px)); margin: 0 auto; }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        color: var(--muted);
+        font-size: 12px;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+      }
+      .eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--orange); }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0 20px;
+        border: 1px solid var(--ink);
+        border-radius: 999px;
+        font-size: 14px;
+        font-weight: 700;
+        transition: transform .2s ease, background .2s ease, color .2s ease;
+      }
+      .btn:hover { transform: translateY(-2px); }
+      .btn-dark { background: var(--ink); color: var(--paper); }
+      .btn-dark:hover { background: var(--orange); border-color: var(--orange); color: var(--ink); }
+      .btn-ghost:hover { background: var(--ink); color: var(--paper); }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: rgba(243, 240, 233, .88);
+        border-bottom: 1px solid var(--line);
+        backdrop-filter: blur(16px);
+      }
+      .nav { display: flex; min-height: 78px; align-items: center; justify-content: space-between; gap: 24px; }
+      .brand { display: inline-flex; align-items: center; }
+      .brand img { display: block; width: 146px; height: auto; }
+      .brand-fallback { display: none; font-weight: 900; letter-spacing: -.06em; font-size: 25px; }
+      .nav-links { display: flex; align-items: center; gap: 25px; font-size: 14px; }
+      .nav-links a { color: #3b3934; }
+      .nav-links a:hover { color: var(--orange); }
+      .nav-actions { display: flex; align-items: center; gap: 10px; }
+      .lang { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
+      .lang button { border: 0; background: transparent; border-radius: 999px; padding: 7px 10px; color: var(--muted); cursor: pointer; font-size: 12px; font-weight: 700; }
+      .lang button.active { background: var(--ink); color: var(--paper); }
+      .menu-toggle { display: none; border: 0; background: transparent; font-size: 26px; cursor: pointer; }
+
+      .hero { padding: 86px 0 70px; border-bottom: 1px solid var(--line); overflow: hidden; }
+      .hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(420px, .95fr); gap: 70px; align-items: end; }
+      h1, h2, h3, p { margin: 0; }
+      h1 { max-width: 820px; margin-top: 25px; font-size: clamp(54px, 7.2vw, 108px); line-height: .93; letter-spacing: -.075em; font-weight: 800; }
+      h1 em { color: var(--orange); font-family: Georgia, serif; font-weight: 400; letter-spacing: -.09em; }
+      .hero-copy { max-width: 520px; margin-top: 30px; color: #4f4a43; font-size: 19px; line-height: 1.45; }
+      .hero-bottom { display: flex; align-items: center; gap: 16px; margin-top: 36px; }
+      .hero-note { color: var(--muted); font-size: 12px; max-width: 190px; }
+      .hero-art { position: relative; min-height: 520px; }
+      .hero-art::before { content: ""; position: absolute; inset: 15% 4% 0 13%; background: var(--blue); border-radius: 48% 52% 42% 58% / 44% 37% 63% 56%; transform: rotate(-7deg); }
+      .hero-card { position: absolute; overflow: hidden; border: 8px solid var(--ink); background: var(--ink); box-shadow: 10px 12px 0 var(--ink); }
+      .hero-card img { display: block; width: 100%; height: 100%; object-fit: cover; filter: saturate(.88) contrast(1.05); }
+      .hero-card-main { width: 64%; height: 68%; top: 7%; right: 7%; transform: rotate(5deg); }
+      .hero-card-small { width: 49%; height: 48%; bottom: 1%; left: 7%; transform: rotate(-8deg); }
+      .hero-stamp { position: absolute; right: 0; bottom: 10%; display: grid; place-items: center; width: 105px; height: 105px; border-radius: 50%; background: var(--orange); color: var(--ink); font-size: 12px; font-weight: 800; line-height: 1.1; text-align: center; transform: rotate(12deg); }
+      .hero-stamp span { display: block; font-size: 30px; letter-spacing: -.08em; }
+
+      .proof { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--line); }
+      .proof-item { min-height: 132px; padding: 26px 24px; border-right: 1px solid var(--line); }
+      .proof-item:last-child { border-right: 0; }
+      .proof-number { display: block; font-size: 42px; font-weight: 800; letter-spacing: -.06em; line-height: 1; }
+      .proof-label { display: block; max-width: 190px; margin-top: 10px; color: var(--muted); font-size: 13px; }
+
+      section { padding: 110px 0; border-bottom: 1px solid var(--line); }
+      .section-head { display: flex; justify-content: space-between; align-items: end; gap: 28px; margin-bottom: 42px; }
+      .section-head h2 { max-width: 760px; margin-top: 17px; font-size: clamp(38px, 5vw, 72px); line-height: .96; letter-spacing: -.07em; }
+      .section-intro { max-width: 360px; color: var(--muted); font-size: 15px; }
+
+      .work-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; }
+      .case { position: relative; display: flex; flex-direction: column; min-height: 490px; overflow: hidden; border-radius: var(--radius); background: #1a1a1a; color: var(--paper); }
+      .case:nth-child(1) { grid-column: span 7; background: #161616; }
+      .case:nth-child(2) { grid-column: span 5; background: #d9d3c8; color: var(--ink); }
+      .case:nth-child(3) { grid-column: span 5; min-height: 420px; background: #ffdd8e; color: var(--ink); }
+      .case:nth-child(4) { grid-column: span 7; min-height: 420px; background: #5a5cff; }
+      .case-media { position: relative; height: 265px; overflow: hidden; background: #333; }
+      .case-media img { width: 100%; height: 100%; object-fit: cover; opacity: .9; transition: transform .5s ease; }
+      .case:hover .case-media img { transform: scale(1.045); }
+      .case-body { display: flex; flex: 1; flex-direction: column; justify-content: space-between; padding: 23px 25px 25px; }
+      .case-index { font-size: 12px; opacity: .65; }
+      .case h3 { max-width: 540px; margin-top: 35px; font-size: clamp(26px, 3vw, 47px); line-height: .98; letter-spacing: -.06em; }
+      .case-meta { display: flex; justify-content: space-between; gap: 14px; align-items: end; margin-top: 30px; font-size: 13px; }
+      .case-result { font-size: 20px; font-weight: 800; letter-spacing: -.04em; }
+      .case-result small { display: block; max-width: 170px; margin-top: 4px; color: inherit; font-size: 12px; font-weight: 400; opacity: .7; letter-spacing: 0; }
+
+      .cap-grid { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--line); }
+      .cap { min-height: 235px; padding: 28px 26px; border-bottom: 1px solid var(--line); }
+      .cap:nth-child(odd) { border-right: 1px solid var(--line); }
+      .cap-number { color: var(--orange); font-size: 13px; font-weight: 800; }
+      .cap h3 { margin-top: 50px; font-size: clamp(25px, 3vw, 39px); line-height: .98; letter-spacing: -.06em; }
+      .cap p { max-width: 360px; margin-top: 15px; color: var(--muted); font-size: 14px; }
+
+      .fit { display: grid; grid-template-columns: .85fr 1.15fr; gap: 90px; }
+      .fit h2 { max-width: 550px; margin-top: 17px; font-size: clamp(42px, 5.7vw, 82px); line-height: .92; letter-spacing: -.08em; }
+      .fit-copy { color: #4f4a43; font-size: 20px; }
+      .fit-list { margin: 25px 0 0; padding: 0; list-style: none; }
+      .fit-list li { display: flex; gap: 15px; padding: 15px 0; border-bottom: 1px solid var(--line); }
+      .fit-list li::before { content: "↗"; color: var(--orange); font-size: 20px; line-height: 1; }
+      .fit-note { margin-top: 28px; color: var(--muted); font-size: 13px; }
+
+      .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--line); }
+      .process { min-height: 210px; padding: 26px 25px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+      .process:last-child { border-right: 0; }
+      .process-number { color: var(--orange); font-weight: 800; }
+      .process h3 { margin-top: 47px; font-size: 28px; letter-spacing: -.05em; }
+      .process p { margin-top: 10px; color: var(--muted); font-size: 14px; }
+
+      .cta { padding: 98px 0 112px; background: var(--ink); color: var(--paper); }
+      .cta-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 80px; align-items: end; }
+      .cta h2 { max-width: 750px; margin-top: 18px; font-size: clamp(52px, 7vw, 103px); line-height: .9; letter-spacing: -.08em; }
+      .cta h2 em { color: var(--orange); font-family: Georgia, serif; font-weight: 400; }
+      .cta-copy { color: #bbb7ae; font-size: 17px; }
+      .cta-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+      .cta .btn-dark { background: var(--orange); color: var(--ink); border-color: var(--orange); }
+      .cta .btn-dark:hover { background: var(--paper); border-color: var(--paper); }
+      .cta .btn-ghost { border-color: #77736c; color: var(--paper); }
+      .cta .btn-ghost:hover { border-color: var(--paper); background: var(--paper); color: var(--ink); }
+
+      footer { padding: 25px 0 35px; background: var(--ink); color: #bbb7ae; }
+      .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 20px; font-size: 13px; }
+      .footer-row a:hover { color: var(--orange); }
+      .footer-brand { color: var(--paper); font-size: 20px; font-weight: 800; letter-spacing: -.06em; }
+
+      @media (max-width: 900px) {
+        .shell { width: min(100% - 34px, 680px); }
+        .nav-links { display: none; position: absolute; top: 78px; left: 0; right: 0; flex-direction: column; align-items: flex-start; padding: 20px 17px 24px; background: var(--paper); border-bottom: 1px solid var(--line); }
+        .nav-links.open { display: flex; }
+        .menu-toggle { display: block; }
+        .nav-actions .btn { display: none; }
+        .hero { padding-top: 60px; }
+        .hero-grid, .fit, .cta-grid { grid-template-columns: 1fr; gap: 45px; }
+        .hero-art { min-height: 420px; }
+        .proof { grid-template-columns: repeat(2, 1fr); }
+        .proof-item:nth-child(2) { border-right: 0; }
+        .proof-item:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+        .work-grid { display: block; }
+        .case { margin-bottom: 17px; }
+        .case:nth-child(1), .case:nth-child(2), .case:nth-child(3), .case:nth-child(4) { min-height: 420px; }
+        .section-head { display: block; }
+        .section-intro { margin-top: 20px; }
+      }
+      @media (max-width: 560px) {
+        .shell { width: calc(100% - 28px); }
+        .brand img { width: 123px; }
+        h1 { font-size: clamp(47px, 15vw, 78px); }
+        .hero-copy { font-size: 17px; }
+        .hero-bottom { align-items: flex-start; flex-direction: column; }
+        .hero-art { min-height: 345px; }
+        .hero-card-main { width: 68%; height: 64%; }
+        .hero-card-small { width: 55%; height: 47%; }
+        .hero-stamp { width: 85px; height: 85px; font-size: 10px; }
+        .hero-stamp span { font-size: 25px; }
+        section { padding: 78px 0; }
+        .proof-number { font-size: 32px; }
+        .proof-item { min-height: 120px; padding: 22px 16px; }
+        .cap-grid, .process-grid { display: block; }
+        .cap, .process { min-height: 180px; border-right: 0; }
+        .cap h3 { margin-top: 32px; }
+        .process h3 { margin-top: 30px; }
+        .footer-row { align-items: flex-start; flex-direction: column; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="shell nav">
+        <a class="brand" href="#top" aria-label="Digital Clever">
+          <img src="https://static.tildacdn.net/tild6639-6237-4137-b263-333634663136/DIGITAL_CLEVER.svg" alt="Digital Clever" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+          <span class="brand-fallback">DIGITAL CLEVER</span>
+        </a>
+        <nav class="nav-links" id="main-nav">
+          <a href="#work" data-i18n="nav.work">Кейсы</a>
+          <a href="#capabilities" data-i18n="nav.capabilities">Компетенции</a>
+          <a href="#approach" data-i18n="nav.approach">Подход</a>
+          <a href="#fit" data-i18n="nav.fit">Кому подходим</a>
+        </nav>
+        <div class="nav-actions">
+          <div class="lang" aria-label="Выбор языка">
+            <button class="active" data-lang="ru">RU</button>
+            <button data-lang="tr">TR</button>
+          </div>
+          <a class="btn btn-dark" href="https://wa.me/905343582898?text=Здравствуйте!%20Хочу%20обсудить%20маркетинг%20для%20моего%20проекта" target="_blank" rel="noopener" data-i18n="nav.cta">Обсудить задачу</a>
+          <button class="menu-toggle" aria-label="Открыть меню" aria-controls="main-nav" aria-expanded="false">☰</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="shell hero-grid">
+          <div>
+            <span class="eyebrow" data-i18n="hero.eyebrow">Маркетинговое агентство в Турции</span>
+            <h1 data-i18n-html="hero.title">Маркетинг для брендов, которым нужно <em>расти</em> в Турции.</h1>
+            <p class="hero-copy" data-i18n="hero.copy">Мы соединяем стратегию, контент, рекламу, SEO и локальное понимание рынка — чтобы бизнес становился заметнее, понятнее и сильнее.</p>
+            <div class="hero-bottom">
+              <a class="btn btn-dark" href="#contact" data-i18n="hero.cta">Обсудить проект</a>
+              <span class="hero-note" data-i18n="hero.note">Полное сопровождение проектов — от €3 500 в месяц.</span>
+            </div>
+          </div>
+          <div class="hero-art" aria-label="Избранные проекты">
+            <div class="hero-card hero-card-main"><img src="https://thb.tildacdn.one/tild3139-3365-4538-b432-383837616663/-/empty/Screenshot_2025-03-1.png" alt="Креатив для La Sultane de Saba в Турции" /></div>
+            <div class="hero-card hero-card-small"><img src="https://thb.tildacdn.one/tild3965-6561-4362-a532-653862653164/-/empty/Laptop_Mockup_of_Fas.png" alt="Digital marketing case for GLOBALMEDIK" /></div>
+            <div class="hero-stamp"><span>TR</span><small data-i18n="hero.stamp">локальное<br />понимание</small></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="shell proof" aria-label="Результаты">
+        <div class="proof-item"><span class="proof-number">85K+</span><span class="proof-label" data-i18n="proof.1">подписчиков у Sakhalin İstanbul</span></div>
+        <div class="proof-item"><span class="proof-number">3 года</span><span class="proof-label" data-i18n="proof.2">долгосрочного партнёрства с брендом</span></div>
+        <div class="proof-item"><span class="proof-number">×5</span><span class="proof-label" data-i18n="proof.3">рост заявок для GLOBALMEDIK</span></div>
+        <div class="proof-item"><span class="proof-number">+68%</span><span class="proof-label" data-i18n="proof.4">рост продаж La Sultane de Saba</span></div>
+      </div>
+
+      <section id="work">
+        <div class="shell">
+          <div class="section-head">
+            <div><span class="eyebrow" data-i18n="work.eyebrow">Избранная работа</span><h2 data-i18n="work.title">Не делаем «просто красиво». Строим маркетинг, который работает.</h2></div>
+            <p class="section-intro" data-i18n="work.intro">Каждый проект начинается с бизнес-задачи, а не с календаря публикаций.</p>
+          </div>
+          <div class="work-grid">
+            <article class="case">
+              <div class="case-media"><img src="https://thb.tildacdn.one/tild3564-6432-4138-b837-633961353739/-/empty/05062007_1-e10ada-16.png" alt="Sakhalin İstanbul — маркетинговый проект" /></div>
+              <div class="case-body"><span class="case-index">01 / HOSPITALITY</span><h3>Sakhalin İstanbul</h3><div class="case-meta"><span class="case-result">85K+<small data-i18n="case.sakhalin">подписчиков и почти 3 года работы в полном маркетинговом сопровождении</small></span><span data-i18n="case.open">Смотреть кейс ↗</span></div></div>
+            </article>
+            <article class="case">
+              <div class="case-media"><img src="https://thb.tildacdn.one/tild3965-6561-4362-a532-653862653164/-/empty/Laptop_Mockup_of_Fas.png" alt="GLOBALMEDIK — медицинский туризм" /></div>
+              <div class="case-body"><span class="case-index">02 / MEDICAL TOURISM</span><h3>GLOBALMEDIK</h3><div class="case-meta"><span class="case-result">×5<small data-i18n="case.globalmedik">рост заявок и работа с качеством лидов в сложной медицинской нише</small></span><span data-i18n="case.open">Смотреть кейс ↗</span></div></div>
+            </article>
+            <article class="case">
+              <div class="case-media"><img src="https://thb.tildacdn.one/tild3139-3365-4538-b432-383837616663/-/empty/Screenshot_2025-03-1.png" alt="La Sultane de Saba — запуск на турецком рынке" /></div>
+              <div class="case-body"><span class="case-index">03 / BEAUTY &amp; RETAIL</span><h3>La Sultane de Saba</h3><div class="case-meta"><span class="case-result">+68%<small data-i18n="case.sultane">рост продаж и +126% к конверсии сайта за период кейса</small></span><span data-i18n="case.open">Смотреть кейс ↗</span></div></div>
+            </article>
+            <article class="case">
+              <div class="case-media" style="background:linear-gradient(135deg,#222 0%,#5a5cff 100%); display:grid; place-items:center;"><div style="padding:28px; color:#fff; font-size:clamp(34px,5vw,70px); line-height:.86; letter-spacing:-.08em; font-weight:800;">GOOD<br />FOOD<br /><span style="color:#ff5a36;">RUSSIA</span></div></div>
+              <div class="case-body"><span class="case-index">04 / MARKET ENTRY</span><h3>Good Food Russia</h3><div class="case-meta"><span class="case-result">TR MARKET<small data-i18n="case.goodfood">выход российских продуктов в Migros, Makrocenter и Trendyol</small></span><span data-i18n="case.open">Смотреть кейс ↗</span></div></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="capabilities">
+        <div class="shell">
+          <div class="section-head">
+            <div><span class="eyebrow" data-i18n="cap.eyebrow">Компетенции</span><h2 data-i18n="cap.title">Одна команда вместо набора разрозненных подрядчиков.</h2></div>
+            <p class="section-intro" data-i18n="cap.intro">Подбираем инструменты под задачу бизнеса, а не продаём одинаковый пакет каждому клиенту.</p>
+          </div>
+          <div class="cap-grid">
+            <div class="cap"><span class="cap-number">01</span><h3 data-i18n="cap.1.title">Стратегия и выход на рынок</h3><p data-i18n="cap.1.copy">Позиционирование, локализация, customer journey и план роста для Турции.</p></div>
+            <div class="cap"><span class="cap-number">02</span><h3 data-i18n="cap.2.title">Бренд и контент</h3><p data-i18n="cap.2.copy">Визуальная система, съёмки, social media и контент, который формирует спрос.</p></div>
+            <div class="cap"><span class="cap-number">03</span><h3 data-i18n="cap.3.title">Performance и лидогенерация</h3><p data-i18n="cap.3.copy">Meta, Google, TikTok и рекламные связки с постоянной аналитикой и оптимизацией.</p></div>
+            <div class="cap"><span class="cap-number">04</span><h3 data-i18n="cap.4.title">SEO и видимость</h3><p data-i18n="cap.4.copy">Турецкая и русская поисковая структура, контент и digital-фундамент для роста.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="fit">
+        <div class="shell fit">
+          <div><span class="eyebrow" data-i18n="fit.eyebrow">Кому мы подходим</span><h2 data-i18n-html="fit.title">Партнёрство для тех, кто хочет <em>расти</em>, а не просто присутствовать.</h2></div>
+          <div><p class="fit-copy" data-i18n="fit.copy">Мы работаем с брендами, которым нужен не исполнитель отдельных задач, а команда, способная погрузиться в бизнес и отвечать за маркетинговую систему целиком.</p><ul class="fit-list"><li data-i18n="fit.1">Вы развиваете бизнес в Турции или выходите на турецкий рынок.</li><li data-i18n="fit.2">Готовы инвестировать в маркетинг системно, а не искать самый дешёвый канал.</li><li data-i18n="fit.3">Цените инициативу, прозрачность и долгосрочную работу.</li></ul><p class="fit-note" data-i18n="fit.note">Полное сопровождение проектов — от €3 500 в месяц. Точный состав команды и работ зависит от задачи.</p></div>
+        </div>
+      </section>
+
+      <section id="approach">
+        <div class="shell">
+          <div class="section-head"><div><span class="eyebrow" data-i18n="approach.eyebrow">Как мы работаем</span><h2 data-i18n="approach.title">Сначала понимаем бизнес. Потом выбираем инструменты.</h2></div><p class="section-intro" data-i18n="approach.intro">Никаких универсальных пакетов и активности ради активности.</p></div>
+          <div class="process-grid">
+            <div class="process"><span class="process-number">01</span><h3 data-i18n="process.1.title">Погружаемся</h3><p data-i18n="process.1.copy">Изучаем продукт, рынок, аудиторию, конкурентов и точки роста.</p></div>
+            <div class="process"><span class="process-number">02</span><h3 data-i18n="process.2.title">Собираем систему</h3><p data-i18n="process.2.copy">Формируем стратегию, приоритеты, контент и медиаплан с понятной логикой.</p></div>
+            <div class="process"><span class="process-number">03</span><h3 data-i18n="process.3.title">Растим результат</h3><p data-i18n="process.3.copy">Запускаем, измеряем, корректируем и предлагаем следующие шаги сами.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta" id="contact">
+        <div class="shell cta-grid">
+          <div><span class="eyebrow" style="color:#aaa69f" data-i18n="cta.eyebrow">Следующий шаг</span><h2 data-i18n-html="cta.title">Расскажите, куда вы хотите <em>прийти.</em></h2></div>
+          <div><p class="cta-copy" data-i18n="cta.copy">Опишите задачу в WhatsApp. Мы посмотрим на проект, зададим правильные вопросы и честно скажем, можем ли быть полезны.</p><div class="cta-actions"><a class="btn btn-dark" href="https://wa.me/905343582898?text=Здравствуйте!%20Хочу%20обсудить%20маркетинг%20для%20моего%20проекта" target="_blank" rel="noopener" data-i18n="cta.whatsapp">Написать в WhatsApp</a><a class="btn btn-ghost" href="mailto:info@digitalclever.net">info@digitalclever.net</a></div></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="shell footer-row"><span class="footer-brand">DIGITAL CLEVER</span><span>İstanbul · Türkiye</span><a href="https://www.instagram.com/digital_clever/" target="_blank" rel="noopener">Instagram ↗</a><a href="https://t.me/digital_clever" target="_blank" rel="noopener">Telegram ↗</a></div>
+    </footer>
+
+    <script>
+      const copy = {
+        ru: {
+          "nav.work":"Кейсы", "nav.capabilities":"Компетенции", "nav.approach":"Подход", "nav.fit":"Кому подходим", "nav.cta":"Обсудить задачу",
+          "hero.eyebrow":"Маркетинговое агентство в Турции", "hero.title":"Маркетинг для брендов, которым нужно <em>расти</em> в Турции.", "hero.copy":"Мы соединяем стратегию, контент, рекламу, SEO и локальное понимание рынка — чтобы бизнес становился заметнее, понятнее и сильнее.", "hero.cta":"Обсудить проект", "hero.note":"Полное сопровождение проектов — от €3 500 в месяц.", "hero.stamp":"локальное<br>понимание",
+          "proof.1":"подписчиков у Sakhalin İstanbul", "proof.2":"долгосрочного партнёрства с брендом", "proof.3":"рост заявок для GLOBALMEDIK", "proof.4":"рост продаж La Sultane de Saba",
+          "work.eyebrow":"Избранная работа", "work.title":"Не делаем «просто красиво». Строим маркетинг, который работает.", "work.intro":"Каждый проект начинается с бизнес-задачи, а не с календаря публикаций.", "case.sakhalin":"подписчиков и почти 3 года работы в полном маркетинговом сопровождении", "case.globalmedik":"рост заявок и работа с качеством лидов в сложной медицинской нише", "case.sultane":"рост продаж и +126% к конверсии сайта за период кейса", "case.goodfood":"выход российских продуктов в Migros, Makrocenter и Trendyol", "case.open":"Смотреть кейс ↗",
+          "cap.eyebrow":"Компетенции", "cap.title":"Одна команда вместо набора разрозненных подрядчиков.", "cap.intro":"Подбираем инструменты под задачу бизнеса, а не продаём одинаковый пакет каждому клиенту.", "cap.1.title":"Стратегия и выход на рынок", "cap.1.copy":"Позиционирование, локализация, customer journey и план роста для Турции.", "cap.2.title":"Бренд и контент", "cap.2.copy":"Визуальная система, съёмки, social media и контент, который формирует спрос.", "cap.3.title":"Performance и лидогенерация", "cap.3.copy":"Meta, Google, TikTok и рекламные связки с постоянной аналитикой и оптимизацией.", "cap.4.title":"SEO и видимость", "cap.4.copy":"Турецкая и русская поисковая структура, контент и digital-фундамент для роста.",
+          "fit.eyebrow":"Кому мы подходим", "fit.title":"Партнёрство для тех, кто хочет <em>расти</em>, а не просто присутствовать.", "fit.copy":"Мы работаем с брендами, которым нужен не исполнитель отдельных задач, а команда, способная погрузиться в бизнес и отвечать за маркетинговую систему целиком.", "fit.1":"Вы развиваете бизнес в Турции или выходите на турецкий рынок.", "fit.2":"Готовы инвестировать в маркетинг системно, а не искать самый дешёвый канал.", "fit.3":"Цените инициативу, прозрачность и долгосрочную работу.", "fit.note":"Полное сопровождение проектов — от €3 500 в месяц. Точный состав команды и работ зависит от задачи.",
+          "approach.eyebrow":"Как мы работаем", "approach.title":"Сначала понимаем бизнес. Потом выбираем инструменты.", "approach.intro":"Никаких универсальных пакетов и активности ради активности.", "process.1.title":"Погружаемся", "process.1.copy":"Изучаем продукт, рынок, аудиторию, конкурентов и точки роста.", "process.2.title":"Собираем систему", "process.2.copy":"Формируем стратегию, приоритеты, контент и медиаплан с понятной логикой.", "process.3.title":"Растим результат", "process.3.copy":"Запускаем, измеряем, корректируем и предлагаем следующие шаги сами.",
+          "cta.eyebrow":"Следующий шаг", "cta.title":"Расскажите, куда вы хотите <em>прийти.</em>", "cta.copy":"Опишите задачу в WhatsApp. Мы посмотрим на проект, зададим правильные вопросы и честно скажем, можем ли быть полезны.", "cta.whatsapp":"Написать в WhatsApp"
+        },
+        tr: {
+          "nav.work":"Projeler", "nav.capabilities":"Uzmanlık alanları", "nav.approach":"Yaklaşımımız", "nav.fit":"Kime uygunuz", "nav.cta":"Projenizi konuşalım",
+          "hero.eyebrow":"Türkiye'de pazarlama ajansı", "hero.title":"Türkiye'de <em>büyümek</em> isteyen markalar için pazarlama.", "hero.copy":"Strateji, içerik, reklam, SEO ve yerel pazar bilgimizi bir araya getiriyoruz; markanız daha görünür, anlaşılır ve güçlü olsun diye.", "hero.cta":"Projenizi konuşalım", "hero.note":"Kapsamlı pazarlama yönetimi aylık €3.500'den başlar.", "hero.stamp":"yerel<br>içgörü",
+          "proof.1":"Sakhalin İstanbul Instagram takipçisi", "proof.2":"markayla uzun soluklu iş ortaklığı", "proof.3":"GLOBALMEDIK için lead artışı", "proof.4":"La Sultane de Saba satış artışı",
+          "work.eyebrow":"Seçili projeler", "work.title":"Sadece güzel görünmesini değil, çalışmasını sağlıyoruz.", "work.intro":"Her proje bir içerik takvimiyle değil, bir iş hedefiyle başlar.", "case.sakhalin":"takipçi ve yaklaşık 3 yıllık kapsamlı pazarlama iş ortaklığı", "case.globalmedik":"zor bir medikal turizm alanında lead sayısı ve kalite artışı", "case.sultane":"satışlarda artış ve web sitesi dönüşümünde +126%", "case.goodfood":"Rus ürünlerinin Migros, Makrocenter ve Trendyol'a girişi", "case.open":"Projeyi incele ↗",
+          "cap.eyebrow":"Uzmanlık alanları", "cap.title":"Birbirinden kopuk tedarikçiler yerine tek ekip.", "cap.intro":"Her müşteriye aynı paketi satmıyor, araçları iş hedefinize göre seçiyoruz.", "cap.1.title":"Strateji ve pazara giriş", "cap.1.copy":"Konumlandırma, lokalizasyon, müşteri yolculuğu ve Türkiye için büyüme planı.", "cap.2.title":"Marka ve içerik", "cap.2.copy":"Görsel sistem, prodüksiyon, sosyal medya ve talep yaratan içerik.", "cap.3.title":"Performance ve lead generation", "cap.3.copy":"Sürekli analiz ve optimizasyonla Meta, Google, TikTok ve reklam kurguları.", "cap.4.title":"SEO ve görünürlük", "cap.4.copy":"Büyüme için Türkçe ve Rusça arama yapısı, içerik ve dijital temel.",
+          "fit.eyebrow":"Kime uygunuz", "fit.title":"Sadece var olmak değil, <em>büyümek</em> isteyen markalarla ortaklık.", "fit.copy":"Tek tek görevleri yerine getiren bir taşeron değil, işinize derinlemesine girip pazarlama sisteminizin tamamından sorumluluk alabilen bir ekibiz.", "fit.1":"Türkiye'de büyüyorsunuz veya Türkiye pazarına giriyorsunuz.", "fit.2":"En ucuz kanalı aramak yerine pazarlamaya sistemli yatırım yapmaya hazırsınız.", "fit.3":"İnisiyatif, şeffaflık ve uzun vadeli çalışmaya değer veriyorsunuz.", "fit.note":"Kapsamlı projeler aylık €3.500'den başlar. Ekip ve iş kapsamı hedeflerinize göre belirlenir.",
+          "approach.eyebrow":"Çalışma şeklimiz", "approach.title":"Önce işi anlarız. Sonra araçları seçeriz.", "approach.intro":"Standart paketler ve sadece aktif görünmek için yapılan işler yok.", "process.1.title":"Derinleşiriz", "process.1.copy":"Ürünü, pazarı, hedef kitleyi, rakipleri ve büyüme noktalarını inceleriz.", "process.2.title":"Sistem kurarız", "process.2.copy":"Strateji, öncelikler, içerik ve medya planını net bir mantıkla oluştururuz.", "process.3.title":"Sonucu büyütürüz", "process.3.copy":"Başlatır, ölçer, düzeltir ve sonraki adımları kendimiz öneririz.",
+          "cta.eyebrow":"Sonraki adım", "cta.title":"Nereye ulaşmak istediğinizi <em>anlatın.</em>", "cta.copy":"Projenizi WhatsApp'ta kısaca anlatın. İnceleyip doğru soruları soracak ve faydalı olup olamayacağımızı açıkça söyleyeceğiz.", "cta.whatsapp":"WhatsApp'tan yazın"
+        }
+      };
+
+      function applyLanguage(lang) {
+        document.documentElement.lang = lang;
+        document.querySelectorAll('[data-i18n]').forEach((el) => {
+          const value = copy[lang][el.dataset.i18n];
+          if (value !== undefined) el.textContent = value;
+        });
+        document.querySelectorAll('[data-i18n-html]').forEach((el) => {
+          const value = copy[lang][el.dataset.i18nHtml];
+          if (value !== undefined) el.innerHTML = value;
+        });
+        document.querySelectorAll('[data-lang]').forEach((button) => button.classList.toggle('active', button.dataset.lang === lang));
+      }
+      document.querySelectorAll('[data-lang]').forEach((button) => button.addEventListener('click', () => applyLanguage(button.dataset.lang)));
+      const toggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('.nav-links');
+      toggle.addEventListener('click', () => { const open = nav.classList.toggle('open'); toggle.setAttribute('aria-expanded', String(open)); });
+      nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => { nav.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }));
+    </script>
+  </body>
+</html>
