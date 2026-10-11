@@ -70,7 +70,9 @@ section { padding: 92px 0; }
 .case-media img { opacity: 1; filter: none; }
 .case:nth-child(2) .case-media img,
 .case:nth-child(4) .case-media img,
-.case:nth-child(5) .case-media img { object-fit: contain; padding: 20px; }
+.case:nth-child(5) .case-media img,
+.case:nth-child(6) .case-media img { object-fit: contain; padding: 20px; }
+.case:nth-child(6) .case-media { background: #f5f0e7; }
 .case-body { padding: 22px 24px 24px; }
 .case-index { color: var(--muted); opacity: 1; font-size: 11px; letter-spacing: .08em; }
 .case h3 { margin-top: 22px; font-size: clamp(25px, 2.35vw, 36px); line-height: 1.02; }
