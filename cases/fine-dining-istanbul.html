@@ -27,6 +27,6 @@
     };
     function setLang(lang){document.documentElement.lang=lang;document.querySelectorAll('[data-i18n]').forEach(e=>{const v=copy[lang][e.dataset.i18n];if(v!==undefined)e.textContent=v});document.querySelectorAll('[data-i18n-html]').forEach(e=>{const v=copy[lang][e.dataset.i18nHtml];if(v!==undefined)e.innerHTML=v});document.querySelectorAll('[data-lang]').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang))};document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
   </script>
-  <script src="../assets/motion.js?v=1"></script>
+  <script src="../assets/motion.js?v=2"></script>
 </body>
 </html>
