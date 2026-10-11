@@ -41,16 +41,88 @@ html {
   opacity: 0;
   transform: translate3d(0, 18px, 0) scale(1.055);
   filter: blur(3px);
+  clip-path: inset(0 0 100% 0 round 16px);
   transition:
     opacity 0.85s cubic-bezier(0.22, 0.61, 0.36, 1) var(--photo-delay, 0ms),
     transform 1.15s cubic-bezier(0.16, 1, 0.3, 1) var(--photo-delay, 0ms),
-    filter 0.9s ease var(--photo-delay, 0ms);
+    filter 0.9s ease var(--photo-delay, 0ms),
+    clip-path 1.05s cubic-bezier(0.16, 1, 0.3, 1) var(--photo-delay, 0ms);
   will-change: transform, opacity;
 }
 .motion-ready .reveal-photo.is-visible {
   opacity: 1;
   transform: translate3d(0, 0, 0) scale(1);
   filter: blur(0);
+  clip-path: inset(0 0 0 0 round 16px);
+}
+.motion-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+.motion-char {
+  display: inline-block;
+  will-change: opacity, transform, filter;
+}
+.scroll-type .motion-char {
+  opacity: 0.08;
+  transform: translate3d(0, 14px, 0);
+  filter: blur(3px);
+}
+.hero-type .motion-char {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  filter: blur(4px);
+}
+.hero-type.is-visible .motion-char {
+  animation: hero-char-in 0.72s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: calc(120ms + var(--char-index) * 12ms);
+}
+.counter-number,
+.number-emphasis {
+  display: inline-block;
+  transform-origin: 50% 65%;
+  transition:
+    color 0.35s ease,
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    text-shadow 0.35s ease;
+  font-variant-numeric: tabular-nums;
+}
+.counter-number.counter-active {
+  color: var(--orange);
+  transform: scale(1.11);
+  text-shadow: 0 10px 32px rgba(201, 97, 82, 0.2);
+}
+.counter-number.counter-settled {
+  animation: counter-settle 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.number-emphasis {
+  opacity: 0.2;
+  transform: translateY(10px) scale(0.94);
+}
+.number-emphasis.is-visible {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.65s ease,
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes hero-char-in {
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+@keyframes counter-settle {
+  0% {
+    transform: scale(1.11);
+  }
+  55% {
+    transform: scale(0.97);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 .motion-ready .reveal-title {
   clip-path: inset(0 0 100% 0);
