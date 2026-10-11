@@ -264,6 +264,26 @@ header {
 .mazi-gallery figure:nth-child(3) img {
   object-position: center top;
 }
+.project-profile {
+  padding: 34px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: #fff;
+}
+.project-profile-grid {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.34fr) minmax(0, 1.66fr);
+  gap: 52px;
+  align-items: start;
+}
+.project-profile p {
+  max-width: 900px;
+  margin: 0;
+  font-size: clamp(21px, 2.35vw, 32px);
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
 .metrics {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -593,6 +613,7 @@ footer {
   }
   .hero-grid,
   .two-col,
+  .project-profile-grid,
   .final-grid {
     grid-template-columns: 1fr;
     gap: 36px;
@@ -675,6 +696,16 @@ footer {
   }
   .hero {
     padding: 36px 0 34px;
+  }
+  .project-profile {
+    padding: 26px 0;
+  }
+  .project-profile-grid {
+    gap: 16px;
+  }
+  .project-profile p {
+    font-size: 21px;
+    line-height: 1.24;
   }
   .hero-grid {
     gap: 24px;
@@ -869,7 +900,8 @@ footer {
 }
 .hero-image:has(img[src*="ozbi"]),
 .image-pair figure:first-child:has(img[src*="ozbi"]) {
-  background-image: url("../assets/ozbi-product.png");
+  background-image: none;
+  background-color: #f0eee8;
   background-size: contain;
 }
 .image-pair figure:last-child:has(img[src*="ozbi"]) {
@@ -877,16 +909,47 @@ footer {
   background-size: contain;
 }
 .hero-image:has(img[src*="berkara"]) {
-  background-image: url("../assets/berkara-wheel-caster.jpg");
+  background-image: none;
+  background-color: #f0eee8;
   background-size: contain;
 }
 .image-pair figure:first-child:has(img[src*="berkara"]) {
-  background-image: url("../assets/berkara-wheel-fixed.jpg");
+  background-image: none;
+  background-color: #f0eee8;
   background-size: contain;
 }
 .image-pair figure:last-child:has(img[src*="berkara"]) {
-  background-image: url("../assets/berkara-wheel.jpg");
+  background-image: none;
+  background-color: #f0eee8;
   background-size: contain;
+}
+.hero-image img[src*="cutout"],
+.image-pair img[src*="cutout"] {
+  object-fit: contain;
+  padding: clamp(14px, 3vw, 38px);
+}
+.whatsapp-float {
+  position: fixed;
+  z-index: 30;
+  right: 20px;
+  bottom: 20px;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: #25d366;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.24);
+  transition: transform 0.2s ease;
+}
+.whatsapp-float:hover {
+  transform: translateY(-3px) scale(1.03);
+}
+.whatsapp-float svg {
+  width: 29px;
+  height: 29px;
+  fill: currentColor;
 }
 .hero-image:has(img[src*="screen-mazi"]),
 .image-pair figure:has(img[src*="screen-mazi"]) {

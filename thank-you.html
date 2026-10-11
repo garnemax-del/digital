@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Спасибо — Digital Clever</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <style>
+      :root {
+        --ink: #121212;
+        --paper: #f3f0e9;
+        --orange: #ff5a36;
+        --muted: #69655e;
+        --line: rgba(18, 18, 18, 0.16);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        color: var(--ink);
+        background: var(--paper);
+        font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .shell {
+        width: min(1180px, calc(100% - 48px));
+        margin: 0 auto;
+      }
+      header {
+        border-bottom: 1px solid var(--line);
+      }
+      .nav {
+        min-height: 76px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .brand {
+        font-size: 23px;
+        font-weight: 900;
+        letter-spacing: -0.065em;
+      }
+      .lang {
+        display: flex;
+        padding: 3px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+      }
+      .lang button {
+        padding: 7px 10px;
+        border: 0;
+        border-radius: 999px;
+        color: var(--muted);
+        background: transparent;
+        cursor: pointer;
+        font-weight: 700;
+      }
+      .lang button.active {
+        color: var(--paper);
+        background: var(--ink);
+      }
+      main {
+        display: grid;
+        align-items: center;
+        padding: 72px 0;
+      }
+      .success {
+        display: grid;
+        grid-template-columns: 1.25fr 0.75fr;
+        gap: 80px;
+        align-items: end;
+      }
+      .mark {
+        width: 58px;
+        height: 58px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 28px;
+        border-radius: 50%;
+        color: var(--ink);
+        background: var(--orange);
+        font-size: 30px;
+      }
+      h1 {
+        max-width: 850px;
+        margin: 0;
+        font-size: clamp(56px, 8.5vw, 124px);
+        line-height: 0.88;
+        letter-spacing: -0.078em;
+      }
+      h1 em {
+        color: var(--orange);
+        font-family: Georgia, serif;
+        font-weight: 400;
+      }
+      .copy {
+        max-width: 430px;
+        color: #4f4a43;
+        font-size: 20px;
+        line-height: 1.48;
+      }
+      .btn {
+        display: inline-flex;
+        min-height: 48px;
+        align-items: center;
+        justify-content: center;
+        margin-top: 28px;
+        padding: 0 20px;
+        border-radius: 999px;
+        color: var(--paper);
+        background: var(--ink);
+        font-size: 14px;
+        font-weight: 700;
+      }
+      footer {
+        padding: 25px 0 34px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 12px;
+      }
+      @media (max-width: 760px) {
+        .shell {
+          width: calc(100% - 28px);
+        }
+        .success {
+          grid-template-columns: 1fr;
+          gap: 38px;
+        }
+        main {
+          padding: 52px 0;
+        }
+        h1 {
+          font-size: clamp(52px, 16vw, 76px);
+        }
+        .copy {
+          font-size: 17px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="shell nav">
+        <a class="brand" href="index.html">DIGITAL CLEVER</a>
+        <div class="lang">
+          <button class="active" data-lang="ru">RU</button
+          ><button data-lang="tr">TR</button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="shell success">
+        <div>
+          <div class="mark">✓</div>
+          <h1
+            data-ru="Спасибо! Запрос <em>получен.</em>"
+            data-tr="Teşekkürler! Talebiniz <em>alındı.</em>"
+          >
+            Спасибо! Запрос <em>получен.</em>
+          </h1>
+        </div>
+        <div>
+          <p
+            class="copy"
+            data-ru="Мы изучим вашу задачу и ответим в течение 24 часов. Если WhatsApp не открылся автоматически, напишите нам по кнопке ниже."
+            data-tr="Talebinizi inceleyip 24 saat içinde yanıt vereceğiz. WhatsApp otomatik açılmadıysa aşağıdaki düğmeden bize yazabilirsiniz."
+          >
+            Мы изучим вашу задачу и ответим в течение 24 часов. Если WhatsApp не
+            открылся автоматически, напишите нам по кнопке ниже.
+          </p>
+          <a
+            class="btn"
+            href="https://wa.me/905343582898?text=Здравствуйте!%20Я%20нашёл%20ваш%20сайт%20в%20интернете.%20У%20меня%20следующий%20запрос%3A%20"
+            target="_blank"
+            rel="noopener"
+            data-ru="Открыть WhatsApp"
+            data-tr="WhatsApp’ı aç"
+            >Открыть WhatsApp</a
+          >
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="shell">Digital Clever · Istanbul · Türkiye</div>
+    </footer>
+    <script>
+      function setLanguage(lang) {
+        document.documentElement.lang = lang;
+        document
+          .querySelectorAll("[data-ru]")
+          .forEach(
+            (el) =>
+              (el.innerHTML = lang === "tr" ? el.dataset.tr : el.dataset.ru),
+          );
+        document
+          .querySelectorAll("[data-lang]")
+          .forEach((button) =>
+            button.classList.toggle("active", button.dataset.lang === lang),
+          );
+        localStorage.setItem("dc-language", lang);
+      }
+      document
+        .querySelectorAll("[data-lang]")
+        .forEach((button) =>
+          button.addEventListener("click", () =>
+            setLanguage(button.dataset.lang),
+          ),
+        );
+      setLanguage(
+        new URLSearchParams(location.search).get("lang") === "tr" ||
+          localStorage.getItem("dc-language") === "tr"
+          ? "tr"
+          : "ru",
+      );
+    </script>
+  </body>
+</html>

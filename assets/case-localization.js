@@ -201,6 +201,13 @@
       link.href = `../index.html?lang=${lang}${hash ? `#${hash}` : ""}`;
     });
   };
+  const updateProjectProfile = (lang) => {
+    document.querySelectorAll("[data-profile-ru]").forEach((element) => {
+      const value =
+        lang === "tr" ? element.dataset.profileTr : element.dataset.profileRu;
+      if (value) element.textContent = value;
+    });
+  };
   const applyCustom = (lang) => {
     if (!pageCopy) return;
     document.documentElement.lang = lang;
@@ -226,11 +233,25 @@
     localStorage.setItem("dc-language", lang);
     updateLinks(lang);
     updateNavLabels(lang);
+    updateProjectProfile(lang);
   };
 
   const header = q("header");
   const nav = q(".nav-center");
   const navRight = q(".nav-right");
+  const whatsapp = document.createElement("a");
+  whatsapp.className = "whatsapp-float";
+  whatsapp.href =
+    "https://wa.me/905343582898?text=" +
+    encodeURIComponent(
+      "Здравствуйте! Я нашёл ваш сайт в интернете. У меня следующий запрос: ",
+    );
+  whatsapp.target = "_blank";
+  whatsapp.rel = "noopener";
+  whatsapp.setAttribute("aria-label", "WhatsApp");
+  whatsapp.innerHTML =
+    '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16.04 3C8.86 3 3.02 8.78 3.02 15.9c0 2.27.6 4.49 1.74 6.43L3 28.75l6.6-1.72a13.1 13.1 0 0 0 6.43 1.64h.01c7.18 0 13.02-5.78 13.02-12.89C29.06 8.78 23.22 3 16.04 3Zm7.65 18.42c-.32.9-1.88 1.72-2.62 1.82-.67.1-1.52.14-2.45-.15-.57-.18-1.3-.42-2.23-.82-3.92-1.68-6.47-5.59-6.67-5.85-.2-.26-1.6-2.12-1.6-4.04 0-1.92 1.01-2.87 1.37-3.26.36-.39.79-.49 1.05-.49h.76c.24 0 .57-.09.89.68.32.78 1.09 2.66 1.19 2.85.1.2.16.42.03.68-.13.26-.2.42-.39.65-.2.23-.41.51-.59.68-.2.2-.4.41-.17.8.23.39 1.02 1.67 2.19 2.7 1.5 1.33 2.77 1.75 3.16 1.94.39.2.62.16.85-.1.23-.26.98-1.14 1.24-1.53.26-.39.52-.33.88-.2.36.13 2.29 1.08 2.68 1.27.39.2.65.29.75.46.1.16.1.94-.22 1.83Z"/></svg>';
+  document.body.appendChild(whatsapp);
   const back = document.createElement("a");
   back.className = "case-back-mobile";
   back.href = "../index.html#work";
@@ -265,6 +286,7 @@
       localStorage.setItem("dc-language", lang);
       updateLinks(lang);
       updateNavLabels(lang);
+      updateProjectProfile(lang);
       if (pageCopy) applyCustom(lang);
     }),
   );
@@ -279,4 +301,5 @@
     updateNavLabels(preferred);
     if (preferred === "tr") document.querySelector('[data-lang="tr"]')?.click();
   }
+  updateProjectProfile(preferred);
 })();

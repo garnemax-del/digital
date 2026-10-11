@@ -432,6 +432,16 @@
       .case:hover .case-media img {
         transform: scale(1.045);
       }
+      .case-extra-berkara .case-media,
+      .case:nth-child(4) .case-media {
+        background: #f0eee8;
+      }
+      .case-extra-berkara .case-media img,
+      .case:nth-child(4) .case-media img {
+        object-fit: contain;
+        padding: 18px;
+        opacity: 1;
+      }
       .case-body {
         display: flex;
         flex: 1;
@@ -699,6 +709,72 @@
         gap: 12px;
         margin-top: 30px;
       }
+      .lead-form {
+        display: grid;
+        gap: 12px;
+        margin-top: 30px;
+      }
+      .lead-form label {
+        display: grid;
+        gap: 7px;
+        color: #bbb7ae;
+        font-size: 12px;
+      }
+      .lead-form input,
+      .lead-form select,
+      .lead-form textarea {
+        width: 100%;
+        border: 1px solid #5e5b55;
+        border-radius: 13px;
+        background: #202020;
+        color: var(--paper);
+        padding: 14px 15px;
+        font: inherit;
+        outline: none;
+      }
+      .lead-form input:focus,
+      .lead-form select:focus,
+      .lead-form textarea:focus {
+        border-color: var(--orange);
+      }
+      .lead-form textarea {
+        min-height: 118px;
+        resize: vertical;
+      }
+      .lead-form .btn {
+        cursor: pointer;
+        width: 100%;
+      }
+      .form-note {
+        color: #8e8a82;
+        font-size: 11px;
+      }
+      .whatsapp-float {
+        position: fixed;
+        z-index: 30;
+        right: 22px;
+        bottom: 22px;
+        width: 58px;
+        height: 58px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: #25d366;
+        color: #fff;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+      .whatsapp-float:hover {
+        transform: translateY(-3px) scale(1.03);
+        box-shadow: 0 16px 38px rgba(0, 0, 0, 0.3);
+      }
+      .whatsapp-float svg {
+        width: 30px;
+        height: 30px;
+        fill: currentColor;
+      }
       .cta .btn-dark {
         background: var(--orange);
         color: var(--ink);
@@ -902,6 +978,7 @@
           <a href="#capabilities" data-i18n="nav.capabilities">Компетенции</a>
           <a href="#approach" data-i18n="nav.approach">Подход</a>
           <a href="#fit" data-i18n="nav.fit">Кому подходим</a>
+          <a href="team.html" data-i18n="nav.team">Команда</a>
           <a href="#insights" data-i18n="nav.insights">Insights</a>
         </nav>
         <div class="nav-actions">
@@ -1106,7 +1183,7 @@
             <article class="case">
               <div class="case-media">
                 <img
-                  src="assets/sakhalin-interior.jpg"
+                  src="assets/sakhalin-entrance.jpg"
                   alt="Интерьер премиального ресторанного проекта"
                 />
               </div>
@@ -1199,7 +1276,7 @@
             <article class="case">
               <div class="case-media">
                 <img
-                  src="assets/ozbi-product.png"
+                  src="assets/ozbi-product-cutout.png"
                   alt="OZBI — вывод российского продукта на рынок Турции"
                 />
               </div>
@@ -1233,7 +1310,7 @@
             <article class="case case-extra-berkara">
               <div class="case-media">
                 <img
-                  src="assets/berkara-wheel.jpg"
+                  src="assets/berkara-wheel-cutout.png"
                   alt="BERKARA — B2B SEO и структура каталога"
                 />
               </div>
@@ -1533,21 +1610,65 @@
           </div>
           <div>
             <p class="cta-copy" data-i18n="cta.copy">
-              Опишите задачу в WhatsApp. Мы посмотрим на проект, зададим
-              правильные вопросы и честно скажем, можем ли быть полезны.
+              Ответьте на три коротких вопроса. Мы посмотрим на проект и
+              свяжемся с вами в течение 24 часов.
             </p>
-            <div class="cta-actions">
-              <a
-                class="btn btn-dark"
-                href="https://wa.me/905343582898?text=Здравствуйте!%20Хочу%20обсудить%20маркетинг%20для%20моего%20проекта"
-                target="_blank"
-                rel="noopener"
-                data-i18n="cta.whatsapp"
-                >Написать в WhatsApp</a
-              ><a class="btn btn-ghost" href="mailto:info@digitalclever.net"
-                >info@digitalclever.net</a
+            <form class="lead-form" id="lead-form">
+              <label
+                ><span data-i18n="form.name">Как к вам обращаться?</span
+                ><input
+                  name="name"
+                  required
+                  autocomplete="name"
+                  data-placeholder-ru="Имя"
+                  data-placeholder-tr="Adınız"
+                  placeholder="Имя"
+              /></label>
+              <label
+                ><span data-i18n="form.contact">Как с вами связаться?</span
+                ><input
+                  name="contact"
+                  required
+                  data-placeholder-ru="Телефон, WhatsApp или email"
+                  data-placeholder-tr="Telefon, WhatsApp veya e-posta"
+                  placeholder="Телефон, WhatsApp или email"
+              /></label>
+              <label
+                ><span data-i18n="form.service">Что вам нужно?</span
+                ><select name="service" required>
+                  <option value="" data-i18n="form.choose">
+                    Выберите направление
+                  </option>
+                  <option data-i18n="form.s1">Маркетинговая стратегия</option>
+                  <option data-i18n="form.s2">Брендинг и контент</option>
+                  <option data-i18n="form.s3">Реклама и лидогенерация</option>
+                  <option data-i18n="form.s4">Разработка сайта</option>
+                  <option data-i18n="form.s5">SEO</option>
+                  <option data-i18n="form.s6">Частная консультация</option>
+                </select></label
               >
-            </div>
+              <label
+                ><span data-i18n="form.request"
+                  >Что вы хотите изменить в бизнесе?</span
+                ><textarea
+                  name="request"
+                  required
+                  data-placeholder-ru="Коротко опишите задачу, цель или проблему"
+                  data-placeholder-tr="Hedefinizi, ihtiyacınızı veya sorunu kısaca anlatın"
+                  placeholder="Коротко опишите задачу, цель или проблему"
+                ></textarea>
+              </label>
+              <button
+                class="btn btn-dark"
+                type="submit"
+                data-i18n="form.submit"
+              >
+                Отправить запрос
+              </button>
+              <p class="form-note" data-i18n="form.note">
+                После отправки откроется WhatsApp с готовым сообщением.
+              </p>
+            </form>
           </div>
         </div>
       </section>
@@ -1567,6 +1688,17 @@
         >
       </div>
     </footer>
+    <a
+      class="whatsapp-float"
+      href="https://wa.me/905343582898?text=Здравствуйте!%20Я%20нашёл%20ваш%20сайт%20в%20интернете.%20У%20меня%20следующий%20запрос%3A%20"
+      target="_blank"
+      rel="noopener"
+      aria-label="WhatsApp"
+      ><svg viewBox="0 0 32 32" aria-hidden="true">
+        <path
+          d="M16.04 3C8.86 3 3.02 8.78 3.02 15.9c0 2.27.6 4.49 1.74 6.43L3 28.75l6.6-1.72a13.1 13.1 0 0 0 6.43 1.64h.01c7.18 0 13.02-5.78 13.02-12.89C29.06 8.78 23.22 3 16.04 3Zm7.65 18.42c-.32.9-1.88 1.72-2.62 1.82-.67.1-1.52.14-2.45-.15-.57-.18-1.3-.42-2.23-.82-3.92-1.68-6.47-5.59-6.67-5.85-.2-.26-1.6-2.12-1.6-4.04 0-1.92 1.01-2.87 1.37-3.26.36-.39.79-.49 1.05-.49h.76c.24 0 .57-.09.89.68.32.78 1.09 2.66 1.19 2.85.1.2.16.42.03.68-.13.26-.2.42-.39.65-.2.23-.41.51-.59.68-.2.2-.4.41-.17.8.23.39 1.02 1.67 2.19 2.7 1.5 1.33 2.77 1.75 3.16 1.94.39.2.62.16.85-.1.23-.26.98-1.14 1.24-1.53.26-.39.52-.33.88-.2.36.13 2.29 1.08 2.68 1.27.39.2.65.29.75.46.1.16.1.94-.22 1.83Z"
+        /></svg
+    ></a>
 
     <script>
       const copy = {
@@ -1576,6 +1708,7 @@
           "nav.capabilities": "Компетенции",
           "nav.approach": "Подход",
           "nav.fit": "Кому подходим",
+          "nav.team": "Команда",
           "nav.cta": "Обсудить задачу",
           "hero.eyebrow": "Маркетинговая команда бренда в Турции",
           "hero.title":
@@ -1710,8 +1843,22 @@
           "cta.eyebrow": "Следующий шаг",
           "cta.title": "Расскажите, куда вы хотите <em>прийти.</em>",
           "cta.copy":
-            "Опишите задачу в WhatsApp. Мы посмотрим на проект, зададим правильные вопросы и честно скажем, можем ли быть полезны.",
+            "Ответьте на три коротких вопроса. Мы посмотрим на проект и свяжемся с вами в течение 24 часов.",
           "cta.whatsapp": "Написать в WhatsApp",
+          "form.name": "Как к вам обращаться?",
+          "form.contact": "Как с вами связаться?",
+          "form.service": "Что вам нужно?",
+          "form.choose": "Выберите направление",
+          "form.s1": "Маркетинговая стратегия",
+          "form.s2": "Брендинг и контент",
+          "form.s3": "Реклама и лидогенерация",
+          "form.s4": "Разработка сайта",
+          "form.s5": "SEO",
+          "form.s6": "Частная консультация",
+          "form.request": "Что вы хотите изменить в бизнесе?",
+          "form.submit": "Отправить запрос",
+          "form.note":
+            "После отправки откроется WhatsApp с готовым сообщением.",
         },
         tr: {
           "nav.work": "Projeler",
@@ -1719,6 +1866,7 @@
           "nav.capabilities": "Uzmanlık alanları",
           "nav.approach": "Yaklaşımımız",
           "nav.fit": "Kime uygunuz",
+          "nav.team": "Ekip",
           "nav.cta": "Projenizi konuşalım",
           "hero.eyebrow": "Türkiye'deki pazarlama ekibiniz",
           "hero.title":
@@ -1851,8 +1999,21 @@
           "cta.eyebrow": "Sonraki adım",
           "cta.title": "Nereye ulaşmak istediğinizi <em>anlatın.</em>",
           "cta.copy":
-            "Projenizi WhatsApp'ta kısaca anlatın. İnceleyip doğru soruları soracak ve faydalı olup olamayacağımızı açıkça söyleyeceğiz.",
+            "Üç kısa soruyu yanıtlayın. Projenizi inceleyip 24 saat içinde sizinle iletişime geçeceğiz.",
           "cta.whatsapp": "WhatsApp'tan yazın",
+          "form.name": "Size nasıl hitap edelim?",
+          "form.contact": "Sizinle nasıl iletişime geçelim?",
+          "form.service": "Neye ihtiyacınız var?",
+          "form.choose": "Hizmet seçin",
+          "form.s1": "Pazarlama stratejisi",
+          "form.s2": "Marka ve içerik",
+          "form.s3": "Reklam ve lead generation",
+          "form.s4": "Web sitesi geliştirme",
+          "form.s5": "SEO",
+          "form.s6": "Bire bir danışmanlık",
+          "form.request": "İşinizde neyi değiştirmek istiyorsunuz?",
+          "form.submit": "Talebi gönder",
+          "form.note": "Gönderimden sonra hazır mesajla WhatsApp açılır.",
         },
       };
 
@@ -1872,6 +2033,10 @@
           .forEach((button) =>
             button.classList.toggle("active", button.dataset.lang === lang),
           );
+        document.querySelectorAll("[data-placeholder-ru]").forEach((el) => {
+          el.placeholder =
+            lang === "tr" ? el.dataset.placeholderTr : el.dataset.placeholderRu;
+        });
       }
       document
         .querySelectorAll("[data-lang]")
@@ -1893,7 +2058,24 @@
           toggle.setAttribute("aria-expanded", "false");
         }),
       );
+      document
+        .getElementById("lead-form")
+        .addEventListener("submit", (event) => {
+          event.preventDefault();
+          const data = new FormData(event.currentTarget);
+          const lang = document.documentElement.lang === "tr" ? "tr" : "ru";
+          const message =
+            lang === "tr"
+              ? `Merhaba! Web sitenizi internette buldum. Talebim:\n\nAd: ${data.get("name")}\nİletişim: ${data.get("contact")}\nHizmet: ${data.get("service")}\nTalep: ${data.get("request")}`
+              : `Здравствуйте! Я нашёл ваш сайт в интернете. У меня следующий запрос:\n\nИмя: ${data.get("name")}\nСвязь: ${data.get("contact")}\nУслуга: ${data.get("service")}\nЗапрос: ${data.get("request")}`;
+          window.open(
+            `https://wa.me/905343582898?text=${encodeURIComponent(message)}`,
+            "_blank",
+            "noopener",
+          );
+          window.location.href = `thank-you.html?lang=${lang}`;
+        });
     </script>
-    <script src="assets/motion.js?v=5"></script>
+    <script src="assets/motion.js?v=6"></script>
   </body>
 </html>

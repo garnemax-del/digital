@@ -23,6 +23,8 @@
       ".fit > *",
       ".cta-grid > *",
       ".final-grid > *",
+      ".project-profile-grid > *",
+      ".team-card",
     ].join(","),
   );
   const photos = document.querySelectorAll(
@@ -32,6 +34,7 @@
       ".image-pair img",
       ".image-triptych img",
       ".mazi-identity-grid img",
+      ".team-card img",
     ].join(","),
   );
   const typingSelector = [
