@@ -244,7 +244,7 @@
   whatsapp.href =
     "https://wa.me/905343582898?text=" +
     encodeURIComponent(
-      "Здравствуйте! Я нашёл ваш сайт в интернете. У меня следующий запрос: ",
+      "Здравствуйте! Пишу с вашего сайта. У меня следующий запрос:",
     );
   whatsapp.target = "_blank";
   whatsapp.rel = "noopener";
@@ -254,7 +254,7 @@
   document.body.appendChild(whatsapp);
   const back = document.createElement("a");
   back.className = "case-back-mobile";
-  back.href = "../index.html#work";
+  back.href = "../work.html";
   back.textContent = "← Кейсы";
   const menu = document.createElement("button");
   menu.className = "case-menu-toggle";

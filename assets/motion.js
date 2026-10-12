@@ -271,49 +271,4 @@
   window.addEventListener("resize", requestMotionUpdate, { passive: true });
   initTyping();
 
-  if (!window.matchMedia("(pointer: fine)").matches) return;
-  let current = scrollY;
-  let target = current;
-  let smoothFrame = 0;
-  const animateScroll = () => {
-    current += (target - current) * 0.13;
-    if (Math.abs(target - current) < 0.5) current = target;
-    scrollTo(0, current);
-    if (current !== target) smoothFrame = requestAnimationFrame(animateScroll);
-    else smoothFrame = 0;
-  };
-  window.addEventListener(
-    "wheel",
-    (event) => {
-      if (
-        event.ctrlKey ||
-        event.metaKey ||
-        Math.abs(event.deltaX) > Math.abs(event.deltaY)
-      )
-        return;
-      if (
-        event.target instanceof Element &&
-        event.target.closest("[data-native-scroll]")
-      )
-        return;
-      event.preventDefault();
-      const max = Math.max(
-        0,
-        document.documentElement.scrollHeight - innerHeight,
-      );
-      target = Math.max(0, Math.min(max, target + event.deltaY));
-      if (!smoothFrame) {
-        current = scrollY;
-        smoothFrame = requestAnimationFrame(animateScroll);
-      }
-    },
-    { passive: false },
-  );
-  window.addEventListener(
-    "scroll",
-    () => {
-      if (!smoothFrame) current = target = scrollY;
-    },
-    { passive: true },
-  );
 })();
