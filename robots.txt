@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://garnemax-del.github.io/digital/sitemap.xml
